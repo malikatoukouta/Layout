@@ -90,6 +90,24 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.project-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.project-card:nth-child(4) {
+    animation-delay: 0.4s;
 }
 
 .project-card:hover {
@@ -160,6 +178,18 @@ body {
     cursor: not-allowed;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 @media (min-width: 768px) {
     .page {
         grid-template-columns: 3fr 1fr;
@@ -171,5 +201,53 @@ body {
 
     .header nav {
         flex-direction: row;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        animation: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #4dd0e1;
+        --dark: #111;
+        --light: #121212;
+        --white: #1e1e1e;
+        --text: #f4f4f4;
+    }
+
+    body {
+        background: var(--light);
+        color: var(--text);
+    }
+
+    .main,.sidebar,.project-card {
+        background: var(--white);
+        color: var(--text);
+    }
+
+    .project-content p {
+        color: #d0d0d0;
+    }
+
+    .header, .footer {
+        background: var(--dark);
+        color: var(--text);
+    }
+
+    .header a {
+        color: var(--text);
+    }
+
+    .btn {
+        background: var(--primary);
+        color: #111;
+    }
+
+    .btn:hover {
+        background: #80deea;
     }
 }
